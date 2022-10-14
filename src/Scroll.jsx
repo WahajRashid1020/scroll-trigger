@@ -22,11 +22,10 @@ const Scroll = () => {
   };
 
   const slider = useRef(null);
-
+  let i = 0;
   function scroll(e) {
     if (slider === null) return 0;
-    console.log(e.currentTarget.length++);
-
+    // console.log(e.slider.current);
     e.wheelDelta > 0 ? slider.current.slickNext() : slider.current.slickPrev();
   }
 
