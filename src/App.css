@@ -74,6 +74,7 @@
   text-align: center;
 }
 .container {
+  overflow: hidden;
   overflow-x: hidden;
   display: flex;
   justify-content: center;
@@ -83,6 +84,7 @@
   background-color: white;
 }
 .text1 {
+  overflow-y: hidden;
   color: black;
   font-size: 8rem;
   text-align: center;
@@ -107,4 +109,18 @@
   background-color: #61dafb;
   width: 50%;
   height: 100%;
+}
+
+/* Slick */
+.Slider {
+  position: absolute !important;
+  width: 50% !important;
+  margin-top: 20%;
+}
+h3 {
+  background: #00558b;
+  color: #fff;
+  font-size: 36px;
+  height: 300px;
+  text-align: center;
 }

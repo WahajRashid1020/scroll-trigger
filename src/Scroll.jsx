@@ -4,12 +4,40 @@ import "./App.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 // Import Swiper styles
 import "swiper/css";
 
 gsap.registerPlugin(ScrollTrigger);
 const Scroll = () => {
+  const settings = {
+    arrows: false,
+    Infinity: false,
+    vertical: true,
+    verticalSwiping: true,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+  };
+
+  const slider = useRef(null);
+
+  function scroll(e) {
+    if (slider === null) return 0;
+    console.log(e.currentTarget.length++);
+
+    e.wheelDelta > 0 ? slider.current.slickNext() : slider.current.slickPrev();
+  }
+
+  useEffect(() => {
+    window.addEventListener("wheel", scroll, true);
+
+    return () => {
+      window.removeEventListener("wheel", scroll, true);
+    };
+  }, []);
+
   const [activate, setactivate] = useState(false);
 
   const myref = useRef();
@@ -44,13 +72,13 @@ const Scroll = () => {
     const text1 = mytext.current;
     gsap.fromTo(
       text1,
-      { y: "1vh" },
+      { y: "0.5vh" },
       {
-        y: "50vh",
+        y: "30vh",
         scrollTrigger: {
           trigger: text1,
           start: "top 20%",
-          end: "bottom 60%",
+          end: "bottom 30%",
           markers: true,
           toggleActions: "play reset play reset",
           // prpr
@@ -184,7 +212,34 @@ const Scroll = () => {
         <div className="text1" ref={mytext}>
           WE CALL THEM CHANGEMAKERS
         </div>
-        <Swiper
+        <Slider ref={slider} className="Slider" {...settings}>
+          <div>
+            <h3>1</h3>
+          </div>
+          <div>
+            <h3>2</h3>
+          </div>
+          <div>
+            <h3>3</h3>
+          </div>
+          <div>
+            <h3>4</h3>
+          </div>
+          <div>
+            <h3>5</h3>
+          </div>
+          <div>
+            <h3>6</h3>
+          </div>
+        </Slider>
+
+        {/* <Swiper
+          style={{
+            height: "200px",
+            width: "400px",
+            backgroundColor: "grey",
+            position: "absolute",
+          }}
           direction={"vertical"}
           spaceBetween={30}
           slidesPerView={2}
@@ -193,22 +248,11 @@ const Scroll = () => {
           onSwiper={(swiper) => console.log(swiper)}
         >
           <SwiperSlide>Slide 1</SwiperSlide>
-          <SwiperSlide>Slide 2</SwiperSlide>
-          <SwiperSlide>Slide 3</SwiperSlide>
-          <SwiperSlide>Slide 4</SwiperSlide> <SwiperSlide>Slide 1</SwiperSlide>
-          <SwiperSlide>Slide 2</SwiperSlide>
-          <SwiperSlide>Slide 3</SwiperSlide>
-          <SwiperSlide>Slide 4</SwiperSlide> <SwiperSlide>Slide 1</SwiperSlide>
-          <SwiperSlide>Slide 2</SwiperSlide>
-          <SwiperSlide>Slide 3</SwiperSlide>
-          <SwiperSlide>Slide 4</SwiperSlide> <SwiperSlide>Slide 1</SwiperSlide>
-          <SwiperSlide>Slide 2</SwiperSlide>
-          <SwiperSlide>Slide 3</SwiperSlide>
-          <SwiperSlide>Slide 4</SwiperSlide> <SwiperSlide>Slide 1</SwiperSlide>
-          <SwiperSlide>Slide 2</SwiperSlide>
-          <SwiperSlide>Slide 3</SwiperSlide>
-          <SwiperSlide>Slide 4</SwiperSlide>
-        </Swiper>
+          <SwiperSlide>Slide 1</SwiperSlide>
+          <SwiperSlide>Slide 1</SwiperSlide>
+          <SwiperSlide>Slide 1</SwiperSlide>
+          <SwiperSlide>Slide 1</SwiperSlide>
+        </Swiper> */}
         {/* <div className="box">
           <div className="boximg"></div>
           <div className="boximg"></div>
