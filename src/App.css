@@ -125,3 +125,9 @@ h3 {
   height: 500px;
   text-align: center;
 }
+.slides {
+  font-size: 8rem;
+  margin-bottom: 10px;
+  background-color: #00558b;
+  text-align: center;
+}

@@ -1,41 +1,49 @@
 import React, { useEffect, useRef, useState } from "react";
+
 import gsap from "gsap";
 import "./App.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
 // Import Swiper styles
 import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/scrollbar";
+
+// import required modules
+import { FreeMode, Scrollbar, Mousewheel } from "swiper";
 
 gsap.registerPlugin(ScrollTrigger);
 const Scroll = () => {
-  const settings = {
-    arrows: false,
-    Infinity: false,
-    vertical: true,
-    verticalSwiping: true,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-  };
+  // const settings = {
+  //   arrows: false,
+  //   Infinity: false,
+  //   vertical: true,
+  //   verticalSwiping: true,
+  //   slidesToShow: 2,
+  //   slidesToScroll: 1,
+  // };
 
-  const slider = useRef(null);
-  let i = 0;
-  function scroll(e) {
-    if (slider === null) return 0;
-    // console.log(e.slider.current);
-    e.wheelDelta > 0 ? slider.current.slickNext() : slider.current.slickPrev();
-  }
+  // const slider = useRef(null);
+  // let i = 0;
+  // function scroll(e) {
+  //   if (slider === null) return 0;
+  //   // console.log(e.slider.current);
+  //   e.wheelDelta > 0 ? slider.current.slickNext() : slider.current.slickPrev();
+  // }
 
-  useEffect(() => {
-    window.addEventListener("wheel", scroll, true);
+  // useEffect(() => {
+  //   window.addEventListener("wheel", scroll, true);
 
-    return () => {
-      window.removeEventListener("wheel", scroll, true);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("wheel", scroll, true);
+  //   };
+  // }, []);
 
   const [activate, setactivate] = useState(false);
 
@@ -49,7 +57,7 @@ const Scroll = () => {
   const ball4 = useRef();
   const heading = useRef();
   const mytext = useRef();
-  const ref = useRef();
+  // const ref = useRef();
 
   useEffect(() => {
     // gsap.to(ref.current, {
@@ -211,7 +219,7 @@ const Scroll = () => {
         <div className="text1" ref={mytext}>
           WE CALL THEM CHANGEMAKERS
         </div>
-        <Slider ref={slider} className="Slider" {...settings}>
+        {/* <Slider ref={slider} className="Slider" {...settings}>
           <div>
             <h3>1</h3>
           </div>
@@ -230,28 +238,28 @@ const Scroll = () => {
           <div>
             <h3>6</h3>
           </div>
-        </Slider>
+        </Slider> */}
 
-        {/* <Swiper
+        <Swiper
+          direction={"vertical"}
+          slidesPerView={"auto"}
+          freeMode={true}
+          scrollbar={true}
+          mousewheel={true}
+          modules={[FreeMode, Scrollbar, Mousewheel]}
+          className="mySwiper"
           style={{
-            height: "200px",
-            width: "400px",
-            backgroundColor: "grey",
+            height: "400px",
+            width: "800px",
             position: "absolute",
           }}
-          direction={"vertical"}
-          spaceBetween={30}
-          slidesPerView={2}
-          mousewheelControl={"true"}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
         >
-          <SwiperSlide>Slide 1</SwiperSlide>
-          <SwiperSlide>Slide 1</SwiperSlide>
-          <SwiperSlide>Slide 1</SwiperSlide>
-          <SwiperSlide>Slide 1</SwiperSlide>
-          <SwiperSlide>Slide 1</SwiperSlide>
-        </Swiper> */}
+          <SwiperSlide className="slides">Slide 1</SwiperSlide>
+          <SwiperSlide className="slides">Slide 2</SwiperSlide>
+          <SwiperSlide className="slides">Slide 3</SwiperSlide>
+          <SwiperSlide className="slides">Slide 4</SwiperSlide>
+          <SwiperSlide className="slides">Slide 5</SwiperSlide>
+        </Swiper>
         {/* <div className="box">
           <div className="boximg"></div>
           <div className="boximg"></div>
